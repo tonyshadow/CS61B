@@ -77,7 +77,7 @@ public class LinkedListDeque<Item> {
         }
         Item itemRemoved = sentinel.next.item;
         sentinel.next = sentinel.next.next;
-        sentinel.next.next.prev = sentinel;
+        sentinel.next.prev = sentinel;
 
         size -= 1;
         return itemRemoved;
@@ -90,7 +90,7 @@ public class LinkedListDeque<Item> {
         }
         Item itemRemoved = sentinel.prev.item;
         sentinel.prev = sentinel.prev.prev;
-        sentinel.prev.prev.next = sentinel;
+        sentinel.prev.next = sentinel;
 
         size -= 1;
         return itemRemoved;
@@ -104,8 +104,8 @@ public class LinkedListDeque<Item> {
         }
         Node p = sentinel.next;
         while (index > 0) {
-            index--;
             p = p.next;
+            index -= 1;
         }
         return p.item;
     }
