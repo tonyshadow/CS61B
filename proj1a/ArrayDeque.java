@@ -5,7 +5,6 @@ public class ArrayDeque<Item> {
     private int size;
 
     private static int REFACTOR = 2;
-    private static double RATIO = 0.25;
 
     public ArrayDeque() {
         items = (Item[]) new Object[8];
@@ -24,29 +23,25 @@ public class ArrayDeque<Item> {
         return (index + 1) % items.length;
     }
 
-    // Help find the real index of the index th item in the whole ArrayDeque.
-    public int realIndex(int index) {
-        return (index + nextFirst + 1) % items.length;
-    }
-
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         Item[] newArray = (Item[]) new Object[capacity];
         int indexFirst = indexAfter(nextFirst);
         if (indexFirst + size > items.length) {
-            System.arraycopy(items, realIndex(0), newArray, 0, items.length - indexFirst);
-            System.arraycopy(items, 0, newArray, items.length - indexFirst + 1, size);
+            System.arraycopy(items, indexFirst, newArray, 0, items.length - indexFirst);
+            System.arraycopy(items, 0, newArray, items.length - indexFirst, size - items.length + indexFirst);
         }else {
             System.arraycopy(items, indexFirst, newArray, 0, size);
         }
         items = newArray;
-        nextFirst = items.length;
+        nextFirst = items.length - 1;
         nextLast = size;
     }
 
-    public void usageRatio() {
+    private void checkRatio() {
         if (items.length >= 16) {
+            double RATIO = 0.25;
             if ((double) size / items.length < RATIO) {
-                resize(size / 2);
+                resize(items.length / 2);
             }
         }
     }
@@ -102,6 +97,7 @@ public class ArrayDeque<Item> {
         nextFirst = indexFirst;
 
         size -= 1;
+        checkRatio();
         return itemRemoved;
     }
 
@@ -110,11 +106,13 @@ public class ArrayDeque<Item> {
         if (isEmpty()) {
             return null;
         }
-        Item itemRemoved = get(size - 1);
-        items[realIndex(size - 1)] = null;
-        nextLast = realIndex(size - 1);
+        int indexLast = indexBefore(nextLast);
+        Item itemRemoved = items[indexLast];
+        items[indexLast] = null;
+        nextLast = indexLast;
 
         size -= 1;
+        checkRatio();
         return itemRemoved;
     }
 
@@ -124,7 +122,7 @@ public class ArrayDeque<Item> {
         if (index >= size) {
             return null;
         }
-        int i = realIndex(index);
-        return items[i];
+        int realIndex = (nextFirst + 1 + index) % items.length;
+        return items[realIndex];
     }
 }
