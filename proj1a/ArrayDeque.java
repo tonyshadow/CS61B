@@ -23,6 +23,7 @@ public class ArrayDeque<Item> {
         return (index + 1) % items.length;
     }
 
+    // Resize the Array to size CAPACITY.
     private void resize(int capacity) {
         Item[] newArray = (Item[]) new Object[capacity];
         int indexFirst = indexAfter(nextFirst);
@@ -37,6 +38,7 @@ public class ArrayDeque<Item> {
         nextLast = size;
     }
 
+    // Check if the usage ratio is lower than 0.25 when Items.length >= 16.
     private void checkRatio() {
         if (items.length >= 16) {
             double RATIO = 0.25;
