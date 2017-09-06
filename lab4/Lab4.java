@@ -4,6 +4,6 @@
 public class Lab4 {
 
 	/* Change this to true when ready to submit. */
-	public static boolean attendedLab = false;
+	public static boolean attendedLab = true;
 
 }

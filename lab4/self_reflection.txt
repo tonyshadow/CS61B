@@ -4,23 +4,23 @@ ArrayDeque:
 
 Q: Give an example of at least one idea from the staff solution that would have made your solution better (if any).
 
-A: 
+A: No. I have no access to the staff solution.
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A: The mod calculation in some methods.
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
-A:
+A: The resize method and the use of some replicated code are kind of ugly to me.
 
 Q: What do you wish you would have known before writing ArrayDeque, if anything?
 
-A:
+A: How to resize a array more elegant as well as how to reduce some kind of replication.
 
 Q: If you wrote ArrayDeque again, what would you do differently, if anything?
 
-A:
+A: Change some code to be more concise.
 
 -----
 
@@ -28,23 +28,23 @@ LinkedListDeque:
 
 Q: Give an example of at least one idea from the staff solution that would have made your solution better (if any).
 
-A: 
+A: No. I have no access to the staff solution.
 
 Q: What's something you felt proud of in your code, if anything?
 
-A:
+A: The skilled use of the pointer of the LinkedList.
 
 Q: What's something that was particularly inelegant in your code, if anything?
 
-A:
+A: The code written within the get method.
 
-Q: What do you wish you would have known before writing ArrayDeque, if anything?
+Q: What do you wish you would have known before writing LinkedListDeque, if anything?
 
-A:
+A: About how to set the empty case.
 
 Q: If you wrote LinkedListDeque again, what would you do differently, if anything?
 
-A:
+A: Write it more quickly.
 
 -----
 
@@ -52,4 +52,4 @@ Meta:
 
 Q: This is the first time we've tried something like this. Did you like this design review process? Anything we should do differently next time?
 
-A: 
+A: Yes. However maybe you won't hear my voice about this review.
